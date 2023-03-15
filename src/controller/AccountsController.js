@@ -21,9 +21,7 @@ class Accounts {
           })
           try {
               await user.save()
-              // response.send(user)
               res.json(user)
-              console.log(req.body);
             res.status(200).send(req.body);
         
           } catch (error) {
@@ -39,6 +37,24 @@ class Accounts {
     .then(data => res.json(data))
     .catch(next)
   }
+
+  // async UpdateInfo(req, res, next) {
+  //   const update = await SignUp.updateOne({ userName: req.body.userName }, {
+  //     $set: {
+  //       userAddress: req.body.userAddress
+  //     }
+  //   })
+  //   try {
+      
+  //     res.json(update)
+  //     res.status(200).send(req.body);
+  //     console.log(update);
+  //   } catch (error) {
+  //     console.log(err);
+  //     res.status(500).send(error);
+  //       next()
+  //   }
+  // }
     
 }
 

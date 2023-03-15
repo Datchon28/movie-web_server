@@ -4,6 +4,7 @@ const cors = require('cors')
 
 const db = require('./src/db/index.js')
 const SignUp = require('./src/routes/SignUp.js')
+// const UpdateAccount = require('./src/routes/UpdateAccount.js')
 const Login = require('./src/routes/Login.js')
 
 const app = express()
@@ -17,6 +18,7 @@ db.connect()
 
 app.get('/login', Login)
 app.post('/signup', SignUp);
+// app.post('/update-account', UpdateAccount);
 
 
 app.listen(port, () => {

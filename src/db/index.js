@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 function connect() {
-    mongoose.connect('mongodb://localhost:27017/movie_web', {
+    mongoose.connect('mongodb+srv://datchon28:nguyenhathu99@website.egy89kn.mongodb.net/movie_web?authSource=+website&authMechanism=SCRAM-SHA-1', {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
