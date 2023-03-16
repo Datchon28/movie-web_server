@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+require('dotenv').config()
 
 const db = require('./src/db/index.js')
 const SignUp = require('./src/routes/SignUp.js')
@@ -8,7 +9,7 @@ const SignUp = require('./src/routes/SignUp.js')
 const Login = require('./src/routes/Login.js')
 
 const app = express()
-const port = 5000
+const port = process.env.PORT || 5000
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended:false }))
