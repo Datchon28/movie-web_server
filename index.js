@@ -5,8 +5,9 @@ require('dotenv').config()
 
 const db = require('./src/db/index.js')
 const SignUp = require('./src/routes/SignUp.js')
-// const UpdateAccount = require('./src/routes/UpdateAccount.js')
+const UpdateAccount = require('./src/routes/UpdateAccount.js')
 const Login = require('./src/routes/Login.js')
+const Favorite = require('./src/routes/Favourite.js')
 
 const app = express()
 const port = process.env.PORT || 5000
@@ -19,7 +20,8 @@ db.connect()
 
 app.get('/login', Login)
 app.post('/signup', SignUp);
-// app.post('/update-account', UpdateAccount);
+app.post('/update-account', UpdateAccount);
+app.post('/favourite/:option', Favorite);
 
 
 app.listen(port, () => {

@@ -8,7 +8,7 @@ const SignUp = new Schema({
     userEmail: { type: String, default: 'email' },
     userPassword: { type: String, minLenght: 18 },
     Gender: {type: String, default: 'none'},
-    userBirhDay: {type: Number, default:'none'},
+    userBirhDay: {type: Date, default:'none'},
     userAddress: {type: String, default: 'none'},
     userCity:  {type: String, default: 'none'},
     userContact:  {type: Number, default: 'none'},

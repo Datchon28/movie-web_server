@@ -3,9 +3,9 @@ const SignUp = require('../module/SignUp.js')
 
 class Accounts {
     
-    async signUp(req, res, next) {
+  async signUp(req, res, next) {
 
-        const user = new SignUp({
+    const user = new SignUp({
             userName: req.body.userName,
             userEmail: req.body.userEmail,
             userPassword: req.body.userPassword,
@@ -22,40 +22,99 @@ class Accounts {
           try {
               await user.save()
               res.json(user)
-            res.status(200).send(req.body);
+              res.status(200).send(req.body);
         
           } catch (error) {
               console.log(err);
               res.status(500).send(error);
               next()
-          }
+    }
         
   }
 
+
    Login(req, res, next) {
-    SignUp.find({})
+     SignUp.find({
+    })
     .then(data => res.json(data))
     .catch(next)
-  }
+  }   
 
-  // async UpdateInfo(req, res, next) {
-  //   const update = await SignUp.updateOne({ userName: req.body.userName }, {
-  //     $set: {
-  //       userAddress: req.body.userAddress
-  //     }
-  //   })
-  //   try {
+  async UpdateInfo(req, res, next) { 
+    let currentUser = req.body.userName
+   try {
+    const update = await SignUp.updateOne({
+      userName: currentUser
       
-  //     res.json(update)
-  //     res.status(200).send(req.body);
-  //     console.log(update);
-  //   } catch (error) {
-  //     console.log(err);
-  //     res.status(500).send(error);
-  //       next()
-  //   }
-  // }
+    }, {
+      userEmail: req.body.userEmail,
+      first_Name: req.body.first_Name,
+      last_Name: req.body.last_Name,
+      Gender: req.body.Gender,
+      userBirhDay: req.body.userBirhDay,
+      userAddress: req.body.userAddress,
+      userCity:  req.body.userCity,
+      userContact:  req.body.userContact,
+    })
+    .then(data => {
+      console.log(data);
+    })
+
+    res.json(update)
+   } catch (error) {
+    console.log(error)
+    res.status(500).send(error);
+    next()
+   }
     
+
+  }
+  
+  async AddToFavourite(req, res, next) { 
+    let currentUser = req.body.userName
+   try {
+    const update = await SignUp.updateOne({
+      userName: currentUser
+      
+    }, {
+      $push: {favourite_Movie: req.body.favourite_Movie}
+    })
+    .then(data => {
+      console.log(data);
+    })
+    res.json(update)
+   } catch (error) {
+    console.log(error)
+    res.status(500).send(error);
+    next()
+   } 
+  }
+  
+  async DeleteMovieInFavourite(req, res, next) { 
+    let currentUser = req.body.userName
+   try {
+    const update = await SignUp.updateOne({
+      userName: currentUser
+      
+    }, {
+      $pull: { "favourite_Movie": [{ id: req.body.id }] }
+  
+    }, {
+      multi: true
+    })
+    .then(data => {
+      console.log(data);
+    })
+    res.json(update)
+   } catch (error) {
+    console.log(error)
+    res.status(500).send(error);
+    next()
+   } 
+  }
+ 
+  
+
 }
 
 module.exports = new Accounts;
