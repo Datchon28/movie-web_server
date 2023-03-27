@@ -94,14 +94,14 @@ class Accounts {
     let currentUser = req.body.userName
    try {
     const update = await SignUp.updateOne({
-      userName: currentUser
+      userName: 'datchon28'
       
     }, {
-      $pull: { "favourite_Movie": [{ id: req.body.id }] }
-  
-    }, {
-      multi: true
-    })
+      $pull: { 
+        favourite_Movie: { id: 238 } 
+      },
+      
+    }, false, true)
     .then(data => {
       console.log(data);
     })

@@ -27,3 +27,5 @@ app.post('/favourite/:option', Favorite);
 app.listen(port, () => {
     console.log(`Run in localhost:${port}`)
   })
+
+module.exports = app;
