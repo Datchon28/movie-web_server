@@ -15,6 +15,6 @@ const SignUp = new Schema({
     favourite_Movie: {type: Array, default: null},
     createAt: { type: Date, default: Date.now }
 
-});
+}, );
 
 module.exports = mongoose.model('accounts', SignUp);

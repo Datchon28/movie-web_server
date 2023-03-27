@@ -55,6 +55,7 @@ class Accounts {
       userAddress: req.body.userAddress,
       userCity:  req.body.userCity,
       userContact:  req.body.userContact,
+      userPassword: req.body.userPassword
     })
     .then(data => {
       console.log(data);
