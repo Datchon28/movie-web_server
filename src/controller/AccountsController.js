@@ -33,11 +33,17 @@ class Accounts {
   }
 
 
-   Login(req, res, next) {
-     SignUp.find({
-    })
-    .then(data => res.json(data))
-    .catch(next)
+   async Login(req, res, next) {
+    try {
+      await SignUp.find({
+      })
+      .then(data => res.json(data))
+    } catch (error) {
+      console.log();
+      next()  
+    } 
+    
+    
   }   
 
   async UpdateInfo(req, res, next) { 
