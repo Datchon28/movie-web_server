@@ -19,10 +19,10 @@ app.use(cors())
 app.use(express.static('public'))
 db.connect()
 
-app.get('/login', Login)
-app.post('/signup', SignUp);
-app.post('/update-account', UpdateAccount);
-app.post('/favourite/:option', Favorite);
+app.use('/login', Login)
+app.use('/signup', SignUp);
+app.use('/update-account', UpdateAccount);
+app.use('/favourite/:option', Favorite);
 
 
 app.listen(port, () => {

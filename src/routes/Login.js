@@ -4,7 +4,7 @@ const router = express.Router()
 const Accounts = require('../controller/AccountsController.js')
 
 
-router.use('/', Accounts.Login)
+router.get('/', Accounts.Login)
 
 
 module.exports =  router

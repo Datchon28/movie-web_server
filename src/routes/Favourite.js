@@ -4,8 +4,8 @@ const router = express.Router()
 const Accounts = require('../controller/AccountsController.js')
 
 
-router.use('/:add', Accounts.AddToFavourite)
-router.use('/:delete', Accounts.DeleteMovieInFavourite)
+router.put('/:add', Accounts.AddToFavourite)
+router.put('/:delete', Accounts.DeleteMovieInFavourite)
 
 
 module.exports =  router

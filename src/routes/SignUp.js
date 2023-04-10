@@ -4,7 +4,7 @@ const router = express.Router()
 const Accounts = require('../controller/AccountsController.js')
 
 
-router.use('/', Accounts.signUp)
+router.post('/', Accounts.signUp)
 
 
 module.exports =  router
